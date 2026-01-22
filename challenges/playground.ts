@@ -1,13 +1,5 @@
-interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
-}
+import { type TupleToObject } from "./00011-easy-tuple-to-object";
 
-type ShortTodo = Pick<Todo, "title" | "description">;
-const todo: ShortTodo = {
-  title: "hello",
-  description: "long description",
-};
+const tuple = ["tesla", "model 3", "model X", "model Y"] as const;
 
-const readOnlyTodo: Readonly<ShortTodo> = todo;
+type result = TupleToObject<typeof tuple>;
