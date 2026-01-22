@@ -4,4 +4,10 @@ interface Todo {
   completed: boolean;
 }
 
-type TodoPreview = Pick<Todo, "title" | "completed">;
+type ShortTodo = Pick<Todo, "title" | "description">;
+const todo: ShortTodo = {
+  title: "hello",
+  description: "long description",
+};
+
+const readOnlyTodo: Readonly<ShortTodo> = todo;
