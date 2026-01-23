@@ -1,5 +1,4 @@
-import { type TupleToObject } from "./00011-easy-tuple-to-object";
+const arr = [1, 2, 3, 4];
+const [p, ...rest] = arr;
 
-const tuple = ["tesla", "model 3", "model X", "model Y"] as const;
-
-type result = TupleToObject<typeof tuple>;
+console.log(p);
