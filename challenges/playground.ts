@@ -1,13 +1,3 @@
-import type { Length } from "./00018-easy-tuple-length";
+import type { MyExclude } from "./00043-easy-exclude";
 
-type tesla = ["tesla", "model 3", "model X", "model Y"];
-type spaceX = [
-  "FALCON 9",
-  "FALCON HEAVY",
-  "DRAGON",
-  "STARSHIP",
-  "HUMAN SPACEFLIGHT",
-];
-
-type teslaLength = Length<tesla>; // expected 4
-type spaceXLength = Length<spaceX>; // expected 5
+type Result = MyExclude<"a" | "b" | "c", "a">; // 'b' | 'c'
