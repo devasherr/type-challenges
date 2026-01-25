@@ -1,5 +1,4 @@
-import type { MyAwaited } from "./00189-easy-awaited";
+import type { If } from "./00268-easy-if";
 
-type ExampleType = Promise<Promise<Promise<string>>>;
-
-type Result = MyAwaited<ExampleType>; // string
+type A = If<true, "a", "b">; // expected to be 'a'
+type B = If<false, "a", "b">; // expected to be 'b'
