@@ -1,3 +1,4 @@
-import type { Concat } from "./00533-easy-concat";
+import type { Includes } from "./00898-easy-includes";
 
-type Result = Concat<[1], [2]>; // expected to be [1, 2]
+type isPillarMen = Includes<["Kars", "Esidisi", "Wamuu", "Santana"], "Dio">; // expected to be `false`
+type BoolTest = Includes<[true, 2, 3, 5, 6, 7], boolean>;
