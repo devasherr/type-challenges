@@ -1,3 +1,3 @@
-import type { Push } from "./03057-easy-push";
+import type { Unshift } from "./03060-easy-unshift";
 
-type Result = Push<[1, 2], "3">; // [1, 2, '3']
+type Result = Unshift<[1, 2], 0>; // [0, 1, 2]
