@@ -1,4 +1,3 @@
-import type { Includes } from "./00898-easy-includes";
+import type { Push } from "./03057-easy-push";
 
-type isPillarMen = Includes<["Kars", "Esidisi", "Wamuu", "Santana"], "Dio">; // expected to be `false`
-type BoolTest = Includes<[true, 2, 3, 5, 6, 7], boolean>;
+type Result = Push<[1, 2], "3">; // [1, 2, '3']
