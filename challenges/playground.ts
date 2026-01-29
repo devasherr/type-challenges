@@ -1,5 +1,8 @@
-import type { MyParameters } from "./03312-easy-parameters";
+import type { MyReturnType } from "./00002-medium-return-type";
 
-const foo = (arg1: string, arg2: number): void => {};
+const fn = (v: boolean) => {
+  if (v) return 1;
+  else return 2;
+};
 
-type FunctionParamsType = MyParameters<typeof foo>; // [arg1: string, arg2: number]
+type a = MyReturnType<typeof fn>; // should be "1 | 2"
