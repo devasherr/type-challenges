@@ -1,8 +1,13 @@
-import type { MyReturnType } from "./00002-medium-return-type";
+import type { MyOmit } from "./00003-medium-omit"
 
-const fn = (v: boolean) => {
-  if (v) return 1;
-  else return 2;
-};
+interface Todo {
+  title: string
+  description: string
+  completed: boolean
+}
 
-type a = MyReturnType<typeof fn>; // should be "1 | 2"
+type TodoPreview = MyOmit<Todo, 'description' | 'title'>
+
+const todo: TodoPreview = {
+  completed: false
+}
