@@ -1,13 +1,19 @@
-import type { MyOmit } from "./00003-medium-omit"
+import type { MyReadonly2 } from "./00008-medium-readonly-2";
 
 interface Todo {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
 }
 
-type TodoPreview = MyOmit<Todo, 'description' | 'title'>
+type T = MyReadonly2<Todo, "title" | "description">;
 
-const todo: TodoPreview = {
-  completed: false
-}
+const todo: MyReadonly2<Todo, "title" | "description"> = {
+  title: "Hey",
+  description: "foobar",
+  completed: false,
+};
+
+todo.title = "Hello"; // Error: cannot reassign a readonly property
+todo.description = "barFoo"; // Error: cannot reassign a readonly property
+todo.completed = true; // OK
