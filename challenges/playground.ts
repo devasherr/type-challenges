@@ -1,26 +1,5 @@
-import type { DeepReadonly } from "./00009-medium-deep-readonly";
+import type { TupleToUnion } from "./00010-medium-tuple-to-union";
 
-type X1 = {
-  a: () => 22;
-  b: string;
-  c: {
-    d: boolean;
-    e: {
-      g: {
-        h: {
-          i: true;
-          j: "string";
-        };
-        k: "hello";
-      };
-      l: [
-        "hi",
-        {
-          m: ["hey"];
-        },
-      ];
-    };
-  };
-};
+type Arr = ["1", "2", "3"];
 
-type Todo = DeepReadonly<X1>; // should be same as `Expected`
+type Test = TupleToUnion<Arr>; // expected to be '1' | '2' | '3'
