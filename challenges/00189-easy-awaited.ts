@@ -22,7 +22,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type MyAwaited<T extends PromiseLike<any>> =
+export type MyAwaited<T> =
   T extends PromiseLike<infer U>
     ? U extends PromiseLike<any>
       ? MyAwaited<U>
