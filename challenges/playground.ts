@@ -1,20 +1,7 @@
-import type { Chainable } from "./00012-medium-chainable-options";
+import type { Last } from "./00015-medium-last";
 
-declare const config: Chainable;
+type arr1 = ["a", "b", "c"];
+type arr2 = [3, 2, 1];
 
-const result = config
-  .option("foo", 123)
-  .option("name", "type-challenges")
-  .option("bar", { value: "Hello World" })
-  .get();
-
-// expect the type of result to be:
-interface Result {
-  foo: number;
-  name: string;
-  bar: {
-    value: string;
-  };
-}
-
-const result3 = config.option("name", "another name").option("name", 123).get();
+type tail1 = Last<arr1>; // expected to be 'c'
+type tail2 = Last<arr2>; // expected to be 1
