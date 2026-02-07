@@ -18,11 +18,17 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type TrimLeft<S extends string> = S extends `${infer Head}${infer Tail}`
-  ? Head extends " " | "\n" | "\t"
-    ? TrimLeft<Tail>
-    : `${Head}${Tail}`
-  : "";
+// export type TrimLeft<S extends string> = S extends `${infer Head}${infer Tail}`
+//   ? Head extends Space
+//     ? TrimLeft<Tail>
+//     : `${Head}${Tail}`
+//   : "";
+
+type Space = " " | "\n" | "\t";
+
+export type TrimLeft<S extends string> = S extends `${Space}${infer Tail}`
+  ? TrimLeft<Tail>
+  : S;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "../utils/";
