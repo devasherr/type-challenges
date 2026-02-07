@@ -1,14 +1,3 @@
-import type { LookUp } from "./00062-medium-type-lookup";
+import type { TrimLeft } from "./00106-medium-trimleft";
 
-interface Cat {
-  type: "cat";
-  breeds: "Abyssinian" | "Shorthair" | "Curl" | "Bengal";
-}
-
-interface Dog {
-  type: "dog";
-  breeds: "Hound" | "Brittany" | "Bulldog" | "Boxer";
-  color: "brown" | "white" | "black";
-}
-
-type MyDogType = LookUp<Cat | Dog, "dog">; // expected to be `Dog`
+type trimmed = TrimLeft<"   \n\t foo bar ">; // expected to be 'Hello World  '
