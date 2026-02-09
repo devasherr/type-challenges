@@ -1,4 +1,7 @@
-import type { ReplaceAll } from "./00119-medium-replaceall";
+import type { AppendArgument } from "./00191-medium-append-argument";
 
-type replaced = ReplaceAll<"t y p e s", " ", "">; // expected to be 'types'
-type T = ReplaceAll<"foboorfoboar", "bo", "b">; // expected to be 'foborfobar'
+type Fn = (a: number, b: string) => number;
+type Fn2 = () => void;
+
+type Result = AppendArgument<Fn, boolean>;
+// expected be (a: number, b: string, x: boolean) => number
