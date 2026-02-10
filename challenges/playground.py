@@ -1,5 +1,10 @@
-def cap(s):
-    if s == "": return ""
-    return s[0].upper() + cap(s[1:])
+def perm(arr):
+    if not arr: return [[]]
 
-print(cap("hello"))
+    res = []
+    for i in range(len(arr)):
+        for p in perm(arr[:i]+arr[i+1:]):
+            res.append([arr[i]]+ p)
+    return res
+
+print(perm([1, 2, 3]))
