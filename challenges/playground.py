@@ -1,10 +1,6 @@
-def perm(arr):
-    if not arr: return [[]]
+def stringLength(s, acc):
+    if not s: return len(acc)
+    acc.append(s[0])
+    return stringLength(s[1:], acc)
 
-    res = []
-    for i in range(len(arr)):
-        for p in perm(arr[:i]+arr[i+1:]):
-            res.append([arr[i]]+ p)
-    return res
-
-print(perm([1, 2, 3]))
+print(stringLength("kulala", [])) # 6
