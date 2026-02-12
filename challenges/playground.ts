@@ -19,12 +19,8 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type StringToUnion<
-  T extends string,
-  Acc extends string = "",
-> = T extends `${infer C}${infer Rest}`
-  ? StringToUnion<Rest, Acc | C>
-  : MyExclude<Acc, "">;
+export type StringToUnion<T extends string> =
+  T extends `${infer C}${infer Rest}` ? C | StringToUnion<Rest> : never;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "../utils/";
