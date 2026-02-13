@@ -1,8 +1,18 @@
-import type { TrimLeft } from "./00106-medium-trimleft";
-import type { KebabCase } from "./00612-medium-kebabcase";
+import type { Diff } from "./00645-medium-diff";
 
-type FooBarBaz = KebabCase<"FooBarBaz">;
-const foobarbaz: FooBarBaz = "foo-bar-baz";
+type Foo = {
+  name: string;
+  age: string;
+};
+type Bar = {
+  name: string;
+  age: string;
+  gender: number;
+};
+type Coo = {
+  name: string;
+  gender: number;
+};
 
-type DoNothing = KebabCase<"do-nothing">;
-const doNothing: DoNothing = "do-nothing";
+type T1 = Diff<Bar, Foo>; // { gender: number }>
+type T2 = Diff<Foo, Coo>; // { age: string; gender: number }>
