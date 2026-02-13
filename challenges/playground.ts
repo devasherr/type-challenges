@@ -1,15 +1,8 @@
-import type { Merge } from "./00599-medium-merge";
+import type { TrimLeft } from "./00106-medium-trimleft";
+import type { KebabCase } from "./00612-medium-kebabcase";
 
-type foo = {
-  name: string;
-  age: string;
-};
-type coo = {
-  age: number;
-  sex: string;
-};
+type FooBarBaz = KebabCase<"FooBarBaz">;
+const foobarbaz: FooBarBaz = "foo-bar-baz";
 
-type Result = Merge<foo, coo>; // expected to be {name: string, age: number, sex: string}
-
-// union
-// intersection -> override
+type DoNothing = KebabCase<"do-nothing">;
+const doNothing: DoNothing = "do-nothing";

@@ -26,9 +26,10 @@
 
 type Space = " " | "\n" | "\t";
 
-export type TrimLeft<S extends string> = S extends `${Space}${infer Tail}`
-  ? TrimLeft<Tail>
-  : S;
+export type TrimLeft<
+  S extends string,
+  T extends string = Space,
+> = S extends `${T}${infer Tail}` ? TrimLeft<Tail> : S;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "../utils/";
