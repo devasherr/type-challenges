@@ -14,5 +14,5 @@ type Coo = {
   gender: number;
 };
 
-type T1 = Diff<Bar, Foo>; // { gender: number }>
-type T2 = Diff<Foo, Coo>; // { age: string; gender: number }>
+type T = Diff<Bar, Foo>; // { gender: number }>>,
+type T2 = Diff<Foo, Coo>; // { age: string; gender: number }>>,

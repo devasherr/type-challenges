@@ -12,13 +12,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type Diff<O, O1> = {
-  [K in Exclude<keyof O | keyof O1, keyof O & keyof O1>]: K extends keyof O
-    ? O[K]
-    : K extends keyof O1
-      ? O1[K]
-      : never;
-};
+export type Diff<O, O1> = Omit<O & O1, keyof (O | O1)>;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "../utils/";
