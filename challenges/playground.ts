@@ -1,18 +1,4 @@
-import type { Diff } from "./00645-medium-diff";
+import type { AnyOf } from "./00949-medium-anyof";
 
-type Foo = {
-  name: string;
-  age: string;
-};
-type Bar = {
-  name: string;
-  age: string;
-  gender: number;
-};
-type Coo = {
-  name: string;
-  gender: number;
-};
-
-type T = Diff<Bar, Foo>; // { gender: number }>>,
-type T2 = Diff<Foo, Coo>; // { age: string; gender: number }>>,
+type Sample1 = AnyOf<[1, "", false, [], {}]>; // expected to be true.
+type Sample2 = AnyOf<[0, "", false, [], {}]>; // expected to be false
