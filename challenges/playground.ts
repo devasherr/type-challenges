@@ -1,7 +1,9 @@
-import type { IsNever } from "./01042-medium-isnever";
+import type { MyPick } from "./00004-easy-pick"
 
-type A = IsNever<never>; // expected to be true
-type B = IsNever<undefined>; // expected to be false
-type C = IsNever<null>; // expected to be false
-type D = IsNever<[]>; // expected to be false
-type E = IsNever<number>; // expected to be false
+interface Todo {
+    title: string
+    description: string
+    completed: boolean
+}
+
+type TodoPreview = MyPick<Todo, 'title' | 'completed'>
