@@ -31,22 +31,24 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyReadonly<T> = {
-  readonly [k in keyof T]: T[k];
-};
+export type MyReadonly<T> = {
+  readonly [k in keyof T]: T[k]
+}
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
-type cases = [Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>];
+type cases = [
+  Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>,
+]
 
 interface Todo1 {
-  title: string;
-  description: string;
-  completed: boolean;
+  title: string
+  description: string
+  completed: boolean
   meta: {
-    author: string;
-  };
+    author: string
+  }
 }
 
 /* _____________ Further Steps _____________ */
@@ -55,3 +57,4 @@ interface Todo1 {
   > View solutions: https://tsch.js.org/7/solutions
   > More Challenges: https://tsch.js.org
 */
+
