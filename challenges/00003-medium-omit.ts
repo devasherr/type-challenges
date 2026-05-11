@@ -30,44 +30,40 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyExclude<T, U> = T extends U ? never : T
-export type MyOmit<T, K> = Pick<T, MyExclude<keyof T, K>>
+export type MyOmit<T, K> = { [k in keyof T as k extends K ? never : k]: T[k] }
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
-  Expect<Equal<Expected1, MyOmit<Todo, "description">>>,
-  Expect<Equal<Expected2, MyOmit<Todo, "description" | "completed">>>,
-  Expect<Equal<Expected3, MyOmit<Todo1, "description" | "completed">>>,
-];
-
-// // @ts-expect-error
-// type error = MyOmit<Todo, "description" | "invalid">;
+  Expect<Equal<Expected1, MyOmit<Todo, 'description'>>>,
+  Expect<Equal<Expected2, MyOmit<Todo, 'description' | 'completed'>>>,
+  Expect<Equal<Expected3, MyOmit<Todo1, 'description' | 'completed'>>>,
+]
 
 interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
+  title: string
+  description: string
+  completed: boolean
 }
 
 interface Todo1 {
-  readonly title: string;
-  description: string;
-  completed: boolean;
+  readonly title: string
+  description: string
+  completed: boolean
 }
 
 interface Expected1 {
-  title: string;
-  completed: boolean;
+  title: string
+  completed: boolean
 }
 
 interface Expected2 {
-  title: string;
+  title: string
 }
 
 interface Expected3 {
-  readonly title: string;
+  readonly title: string
 }
 
 /* _____________ Further Steps _____________ */
@@ -76,3 +72,4 @@ interface Expected3 {
   > View solutions: https://tsch.js.org/3/solutions
   > More Challenges: https://tsch.js.org
 */
+

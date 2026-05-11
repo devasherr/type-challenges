@@ -1,11 +1,14 @@
-import type { MyReadonly } from "./00007-easy-readonly"
+import type { MyOmit } from "./00003-medium-omit"
+import type { MyPick } from "./00004-easy-pick"
 
 interface Todo {
-    title: string,
+    title: string
     description: string
+    completed: boolean
 }
 
-const todo: MyReadonly<Todo> = {
-    title: "task title",
-    description: "task description"
+type TodoPreview = MyOmit<Todo, 'description' | 'title'>
+
+const todo: TodoPreview = {
+    completed: false,
 }
