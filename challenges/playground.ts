@@ -1,4 +1,3 @@
-import type { If } from "./00268-easy-if"
+import type { Concat } from "./00533-easy-concat";
 
-type A = If<true, 'a', 'b'>  // expected to be 'a'
-type B = If<false, 'a', 'b'> // expected to be 'b'
+type Result = Concat<[1], [2]> // expected to be [1, 2]
