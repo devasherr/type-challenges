@@ -28,12 +28,15 @@
 
 /* _____________ Your Code Here _____________ */
 
-type HelloWorld = string; // expected to be a string
+export type HelloWorld = string // expected to be a string
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect, NotAny } from "../utils";
+import type { Equal, Expect, NotAny } from '../utils/'
 
-type cases = [Expect<NotAny<HelloWorld>>, Expect<Equal<HelloWorld, string>>];
+type cases = [
+    Expect<NotAny<HelloWorld>>,
+    Expect<Equal<HelloWorld, string>>,
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -41,3 +44,4 @@ type cases = [Expect<NotAny<HelloWorld>>, Expect<Equal<HelloWorld, string>>];
   > View solutions: https://tsch.js.org/13/solutions
   > More Challenges: https://tsch.js.org
 */
+
