@@ -19,19 +19,19 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type If<C extends boolean, T, F> = C extends true ? T : F;
+export type If<C extends boolean, T, F> = C extends true ? T : F
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
-  Expect<Equal<If<true, "a", "b">, "a">>,
-  Expect<Equal<If<false, "a", 2>, 2>>,
-  Expect<Equal<If<boolean, "a", 2>, "a" | 2>>,
-];
+  Expect<Equal<If<true, 'a', 'b'>, 'a'>>,
+  Expect<Equal<If<false, 'a', 2>, 2>>,
+  Expect<Equal<If<boolean, 'a', 2>, 'a' | 2>>,
+]
 
 // @ts-expect-error
-type error = If<null, "a", "b">;
+type error = If<null, 'a', 'b'>
 
 /* _____________ Further Steps _____________ */
 /*
@@ -39,3 +39,4 @@ type error = If<null, "a", "b">;
   > View solutions: https://tsch.js.org/268/solutions
   > More Challenges: https://tsch.js.org
 */
+
