@@ -20,18 +20,16 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type MyExclude<T, U> = T extends U ? never : T;
+export type MyExclude<T, U> = T extends U ? never : T
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
-  Expect<Equal<MyExclude<"a" | "b" | "c", "a">, "b" | "c">>,
-  Expect<Equal<MyExclude<"a" | "b" | "c", "a" | "b">, "c">>,
-  Expect<
-    Equal<MyExclude<string | number | (() => void), Function>, string | number>
-  >,
-];
+  Expect<Equal<MyExclude<'a' | 'b' | 'c', 'a'>, 'b' | 'c'>>,
+  Expect<Equal<MyExclude<'a' | 'b' | 'c', 'a' | 'b'>, 'c'>>,
+  Expect<Equal<MyExclude<string | number | (() => void), Function>, string | number>>,
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -39,3 +37,4 @@ type cases = [
   > View solutions: https://tsch.js.org/43/solutions
   > More Challenges: https://tsch.js.org
 */
+
