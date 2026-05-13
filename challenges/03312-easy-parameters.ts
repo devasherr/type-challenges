@@ -20,24 +20,20 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type MyParameters<T extends (...args: any[]) => any> = T extends (
-  ...args: infer E
-) => any
-  ? E
-  : any;
+export type MyParameters<T extends (...args: any[]) => any> = T extends (...any: infer P) => any ? P : never
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
-function foo(arg1: string, arg2: number): void {}
-function bar(arg1: boolean, arg2: { a: "A" }): void {}
-function baz(): void {}
+function foo(arg1: string, arg2: number): void { }
+function bar(arg1: boolean, arg2: { a: 'A' }): void { }
+function baz(): void { }
 
 type cases = [
   Expect<Equal<MyParameters<typeof foo>, [string, number]>>,
-  Expect<Equal<MyParameters<typeof bar>, [boolean, { a: "A" }]>>,
+  Expect<Equal<MyParameters<typeof bar>, [boolean, { a: 'A' }]>>,
   Expect<Equal<MyParameters<typeof baz>, []>>,
-];
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -45,3 +41,4 @@ type cases = [
   > View solutions: https://tsch.js.org/3312/solutions
   > More Challenges: https://tsch.js.org
 */
+
