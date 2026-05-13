@@ -1,3 +1,6 @@
-import type { MyExclude } from "./00043-easy-exclude";
+import type { MyAwaited } from "./00189-easy-awaited"
 
-type Result = MyExclude<'a' | 'b' | 'c', 'a'> // 'b' | 'c'
+type ExampleType = Promise<string>
+
+type Result = MyAwaited<ExampleType> // string
+type Res = MyAwaited<Promise<Promise<Promise<string>>>>
