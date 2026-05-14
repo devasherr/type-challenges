@@ -34,41 +34,41 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type MyReadonly2<T, K extends keyof T = keyof T> = {
-  readonly [k in keyof T as k extends K ? k : never]: T[k];
+export type MyReadonly2<T, K extends keyof T> = {
+  readonly [k in keyof T as k extends K ? k : never]: T[k]
 } & {
-  [k in keyof T as k extends K ? never : k]: T[k];
-};
+  [k in keyof T as k extends K ? never : k]: T[k]
+}
 
 /* _____________ Test Cases _____________ */
-import type { Alike, Expect } from "../utils/";
+import type { Alike, Expect } from '../utils/'
 
 type cases = [
   Expect<Alike<MyReadonly2<Todo1>, Readonly<Todo1>>>,
-  Expect<Alike<MyReadonly2<Todo1, "title" | "description">, Expected>>,
-  Expect<Alike<MyReadonly2<Todo2, "title" | "description">, Expected>>,
-  Expect<Alike<MyReadonly2<Todo2, "description">, Expected>>,
-];
+  Expect<Alike<MyReadonly2<Todo1, 'title' | 'description'>, Expected>>,
+  Expect<Alike<MyReadonly2<Todo2, 'title' | 'description'>, Expected>>,
+  Expect<Alike<MyReadonly2<Todo2, 'description'>, Expected>>,
+]
 
 // @ts-expect-error
-type error = MyReadonly2<Todo1, "title" | "invalid">;
+type error = MyReadonly2<Todo1, 'title' | 'invalid'>
 
 interface Todo1 {
-  title: string;
-  description?: string;
-  completed: boolean;
+  title: string
+  description?: string
+  completed: boolean
 }
 
 interface Todo2 {
-  readonly title: string;
-  description?: string;
-  completed: boolean;
+  readonly title: string
+  description?: string
+  completed: boolean
 }
 
 interface Expected {
-  readonly title: string;
-  readonly description?: string;
-  completed: boolean;
+  readonly title: string
+  readonly description?: string
+  completed: boolean
 }
 
 /* _____________ Further Steps _____________ */
@@ -77,3 +77,4 @@ interface Expected {
   > View solutions: https://tsch.js.org/8/solutions
   > More Challenges: https://tsch.js.org
 */
+

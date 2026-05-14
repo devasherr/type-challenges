@@ -1,10 +1,17 @@
-import type { MyReturnType } from "./00002-medium-return-type"
+import type { MyReadonly2 } from "./00008-medium-readonly-2"
 
-const fn = (v: boolean) => {
-    if (v)
-        return 1
-    else
-        return 2
+interface Todo {
+    title: string
+    description: string
+    completed: boolean
 }
 
-type a = MyReturnType<typeof fn> // should be "1 | 2"
+const todo: MyReadonly2<Todo, "title" | 'description'> = {
+    title: "Hey",
+    description: "foobar",
+    completed: false,
+}
+
+todo.title = "Hello" // Error: cannot reassign a readonly property
+todo.description = "barFoo" // Error: cannot reassign a readonly property
+todo.completed = true // OK
