@@ -36,67 +36,67 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type DeepReadonly<T> = T extends never
-  ? T
-  : { readonly [k in keyof T]: DeepReadonly<T[k]> };
+export type DeepReadonly<T> = T extends never ? T : {
+  readonly [k in keyof T]: DeepReadonly<T[k]>
+}
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
   Expect<Equal<DeepReadonly<X1>, Expected1>>,
   Expect<Equal<DeepReadonly<X2>, Expected2>>,
-];
+]
 
 type X1 = {
-  a: () => 22;
-  b: string;
+  a: () => 22
+  b: string
   c: {
-    d: boolean;
+    d: boolean
     e: {
       g: {
         h: {
-          i: true;
-          j: "string";
-        };
-        k: "hello";
-      };
+          i: true
+          j: 'string'
+        }
+        k: 'hello'
+      }
       l: [
-        "hi",
+        'hi',
         {
-          m: ["hey"];
+          m: ['hey']
         },
-      ];
-    };
-  };
-};
+      ]
+    }
+  }
+}
 
-type X2 = { a: string } | { b: number };
+type X2 = { a: string } | { b: number }
 
 type Expected1 = {
-  readonly a: () => 22;
-  readonly b: string;
+  readonly a: () => 22
+  readonly b: string
   readonly c: {
-    readonly d: boolean;
+    readonly d: boolean
     readonly e: {
       readonly g: {
         readonly h: {
-          readonly i: true;
-          readonly j: "string";
-        };
-        readonly k: "hello";
-      };
+          readonly i: true
+          readonly j: 'string'
+        }
+        readonly k: 'hello'
+      }
       readonly l: readonly [
-        "hi",
+        'hi',
         {
-          readonly m: readonly ["hey"];
+          readonly m: readonly ['hey']
         },
-      ];
-    };
-  };
-};
+      ]
+    }
+  }
+}
 
-type Expected2 = { readonly a: string } | { readonly b: number };
+type Expected2 = { readonly a: string } | { readonly b: number }
 
 /* _____________ Further Steps _____________ */
 /*
@@ -104,3 +104,4 @@ type Expected2 = { readonly a: string } | { readonly b: number };
   > View solutions: https://tsch.js.org/9/solutions
   > More Challenges: https://tsch.js.org
 */
+

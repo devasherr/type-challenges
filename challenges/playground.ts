@@ -1,17 +1,45 @@
-import type { MyReadonly2 } from "./00008-medium-readonly-2"
+import type { DeepReadonly } from "./00009-medium-deep-readonly"
 
-interface Todo {
-    title: string
-    description: string
-    completed: boolean
+type X = {
+    x: {
+        a: 1
+        b: 'hi'
+    }
+    y: 'hey'
 }
 
-const todo: MyReadonly2<Todo, "title" | 'description'> = {
-    title: "Hey",
-    description: "foobar",
-    completed: false,
+type Expected = {
+    readonly x: {
+        readonly a: 1
+        readonly b: 'hi'
+    }
+    readonly y: 'hey'
 }
 
-todo.title = "Hello" // Error: cannot reassign a readonly property
-todo.description = "barFoo" // Error: cannot reassign a readonly property
-todo.completed = true // OK
+type Todo = DeepReadonly<X> // should be same as `Expected`
+
+
+type X1 = {
+    a: () => 22
+    b: string
+    c: {
+        d: boolean
+        e: {
+            g: {
+                h: {
+                    i: true
+                    j: 'string'
+                }
+                k: 'hello'
+            }
+            l: [
+                'hi',
+                {
+                    m: ['hey']
+                },
+            ]
+        }
+    }
+}
+
+type T = DeepReadonly<X1>
