@@ -1,5 +1,20 @@
-import type { TupleToUnion } from "./00010-medium-tuple-to-union"
+import type { Chainable } from "./00012-medium-chainable-options"
 
-type Arr = ['1', '2', '3']
+declare const config: Chainable
 
-type Test = TupleToUnion<Arr> // expected to be '1' | '2' | '3'
+const result = config
+    .option('foo', 123)
+    .option('name', 'type-challenges')
+    .option('bar', { value: 'Hello World' })
+    .get()
+
+result
+
+// expect the type of result to be:
+interface Result {
+    foo: number
+    name: string
+    bar: {
+        value: string
+    }
+}

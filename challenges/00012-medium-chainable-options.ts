@@ -39,61 +39,56 @@
 
 /* _____________ Your Code Here _____________ */
 
-// love this challange :)
-
-export type Chainable<O = {}> = {
-  option<K extends string, V>(
-    key: K extends keyof O ? never : K,
-    value: V,
-  ): Chainable<MyOmit<O, K> & Record<K, V>>;
-  get(): O;
-};
+export type Chainable<T = object> = {
+  option<K extends string, V>(key: K extends keyof T ? never : K, value: V): Chainable<MyOmit<T, K> & Record<K, V>>
+  get(): T
+}
 
 /* _____________ Test Cases _____________ */
-import type { Alike, Expect } from "../utils/";
-import type { MyOmit } from "./00003-medium-omit";
+import type { Alike, Expect } from '../utils/'
+import type { MyOmit } from './00003-medium-omit'
 
-declare const a: Chainable;
+declare const a: Chainable
 
 const result1 = a
-  .option("foo", 123)
-  .option("bar", { value: "Hello World" })
-  .option("name", "type-challenges")
-  .get();
+  .option('foo', 123)
+  .option('bar', { value: 'Hello World' })
+  .option('name', 'type-challenges')
+  .get()
 
 const result2 = a
-  .option("name", "another name")
+  .option('name', 'another name')
   // @ts-expect-error
-  .option("name", "last name")
-  .get();
+  .option('name', 'last name')
+  .get()
 
 const result3 = a
-  .option("name", "another name")
+  .option('name', 'another name')
   // @ts-expect-error
-  .option("name", 123)
-  .get();
+  .option('name', 123)
+  .get()
 
 type cases = [
   Expect<Alike<typeof result1, Expected1>>,
   Expect<Alike<typeof result2, Expected2>>,
   Expect<Alike<typeof result3, Expected3>>,
-];
+]
 
 type Expected1 = {
-  foo: number;
+  foo: number
   bar: {
-    value: string;
-  };
-  name: string;
-};
+    value: string
+  }
+  name: string
+}
 
 type Expected2 = {
-  name: string;
-};
+  name: string
+}
 
 type Expected3 = {
-  name: number;
-};
+  name: number
+}
 
 /* _____________ Further Steps _____________ */
 /*
@@ -101,3 +96,4 @@ type Expected3 = {
   > View solutions: https://tsch.js.org/12/solutions
   > More Challenges: https://tsch.js.org
 */
+
