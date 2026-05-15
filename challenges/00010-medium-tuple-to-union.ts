@@ -20,15 +20,20 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type TupleToUnion<T extends any[]> = T[number];
+export type TupleToUnion<T, Ac = never> = T extends [infer Head, ...infer Rest]
+  ? TupleToUnion<Rest, Ac | Head>
+  : Ac
+
+// other person approach :)
+// export type TupleToUnion<T> = T extends Array<infer Items> ? Items : never
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
-  Expect<Equal<TupleToUnion<[123, "456", true]>, 123 | "456" | true>>,
+  Expect<Equal<TupleToUnion<[123, '456', true]>, 123 | '456' | true>>,
   Expect<Equal<TupleToUnion<[123]>, 123>>,
-];
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -36,3 +41,4 @@ type cases = [
   > View solutions: https://tsch.js.org/10/solutions
   > More Challenges: https://tsch.js.org
 */
+
