@@ -24,19 +24,17 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type Last<T extends any[]> = T extends [...any, infer Tail]
-  ? Tail
-  : never;
+export type Last<T extends any[]> = T extends [...infer _, infer Last] ? Last : never
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
   Expect<Equal<Last<[]>, never>>,
   Expect<Equal<Last<[2]>, 2>>,
   Expect<Equal<Last<[3, 2, 1]>, 1>>,
   Expect<Equal<Last<[() => 123, { a: string }]>, { a: string }>>,
-];
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -44,3 +42,4 @@ type cases = [
   > View solutions: https://tsch.js.org/15/solutions
   > More Challenges: https://tsch.js.org
 */
+
