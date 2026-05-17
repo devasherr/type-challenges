@@ -1,10 +1,14 @@
-import { PromiseAll } from "./00020-medium-promise-all";
+import type { LookUp } from "./00062-medium-type-lookup"
 
-const promise1 = Promise.resolve(3);
-const promise2 = 42;
-const promise3 = new Promise<string>((resolve, reject) => {
-    setTimeout(resolve, 100, 'foo');
-});
+interface Cat {
+    type: 'cat'
+    breeds: 'Abyssinian' | 'Shorthair' | 'Curl' | 'Bengal'
+}
 
-// expected to be `Promise<[number, 42, string]>`
-const p = PromiseAll([promise1, promise2, promise3] as const)
+interface Dog {
+    type: 'dog'
+    breeds: 'Hound' | 'Brittany' | 'Bulldog' | 'Boxer'
+    color: 'brown' | 'white' | 'black'
+}
+
+type MyDogType = LookUp<Cat | Dog, "dog"> // expected to be `Dog`
