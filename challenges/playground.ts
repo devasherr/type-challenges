@@ -1,7 +1,10 @@
-import type { Pop } from "./00016-medium-pop"
+import { PromiseAll } from "./00020-medium-promise-all";
 
-type arr1 = ['a', 'b', 'c', 'd']
-type arr2 = [3, 2, 1]
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise<string>((resolve, reject) => {
+    setTimeout(resolve, 100, 'foo');
+});
 
-type re1 = Pop<arr1> // expected to be ['a', 'b', 'c']
-type re2 = Pop<arr2> // expected to be [3, 2]
+// expected to be `Promise<[number, 42, string]>`
+const p = PromiseAll([promise1, promise2, promise3] as const)

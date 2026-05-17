@@ -22,26 +22,16 @@
 */
 
 /* _____________ Your Code Here _____________ */
-
-export declare function PromiseAll<T extends any[]>(
-  values: [...T],
-): Promise<{
-  [K in keyof T]: MyAwaited<T[K]>;
-}>;
+export declare function PromiseAll<T extends any[]>(values: readonly [...T]): Promise<{ [K in keyof T]: T[K] extends Promise<infer R> ? R : T[K] }>;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
-import type { MyAwaited } from "./00189-easy-awaited";
+import type { Equal, Expect } from '../utils/'
 
-const promiseAllTest1 = PromiseAll([1, 2, 3] as const);
-const promiseAllTest2 = PromiseAll([1, 2, Promise.resolve(3)] as const);
-const promiseAllTest3 = PromiseAll([1, 2, Promise.resolve(3)]);
-const promiseAllTest4 = PromiseAll<Array<number | Promise<number>>>([1, 2, 3]);
-const promiseAllTest5 = PromiseAll<(number | Promise<string>)[]>([
-  1,
-  2,
-  Promise.resolve("3"),
-]);
+const promiseAllTest1 = PromiseAll([1, 2, 3] as const)
+const promiseAllTest2 = PromiseAll([1, 2, Promise.resolve(3)] as const)
+const promiseAllTest3 = PromiseAll([1, 2, Promise.resolve(3)])
+const promiseAllTest4 = PromiseAll<Array<number | Promise<number>>>([1, 2, 3])
+const promiseAllTest5 = PromiseAll<(number | Promise<string>)[]>([1, 2, Promise.resolve('3')])
 
 type cases = [
   Expect<Equal<typeof promiseAllTest1, Promise<[1, 2, 3]>>>,
@@ -49,7 +39,7 @@ type cases = [
   Expect<Equal<typeof promiseAllTest3, Promise<[number, number, number]>>>,
   Expect<Equal<typeof promiseAllTest4, Promise<number[]>>>,
   Expect<Equal<typeof promiseAllTest5, Promise<(number | string)[]>>>,
-];
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -57,3 +47,4 @@ type cases = [
   > View solutions: https://tsch.js.org/20/solutions
   > More Challenges: https://tsch.js.org
 */
+
