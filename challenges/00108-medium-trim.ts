@@ -17,29 +17,27 @@
 */
 
 /* _____________ Your Code Here _____________ */
+type Space = " " | "\n" | "\t"
+export type TrimRight<S extends string> = S extends `${infer Left}${Space}`
+  ? TrimRight<Left>
+  : S
 
-type Space = " " | "\n" | "\t";
-
-type TrimRight<S extends string> = S extends `${infer Head}${Space}`
-  ? TrimRight<Head>
-  : S;
-
-export type Trim<S extends string> = TrimLeft<TrimRight<S>>;
+export type Trim<S extends string> = TrimLeft<TrimRight<S>>
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
-import type { TrimLeft } from "./00106-medium-trimleft";
+import type { Equal, Expect } from '../utils/'
+import type { TrimLeft } from './00106-medium-trimleft'
 
 type cases = [
-  Expect<Equal<Trim<"str">, "str">>,
-  Expect<Equal<Trim<" str">, "str">>,
-  Expect<Equal<Trim<"     str">, "str">>,
-  Expect<Equal<Trim<"str   ">, "str">>,
-  Expect<Equal<Trim<"     str     ">, "str">>,
-  Expect<Equal<Trim<"   \n\t foo bar \t">, "foo bar">>,
-  Expect<Equal<Trim<"">, "">>,
-  Expect<Equal<Trim<" \n\t ">, "">>,
-];
+  Expect<Equal<Trim<'str'>, 'str'>>,
+  Expect<Equal<Trim<' str'>, 'str'>>,
+  Expect<Equal<Trim<'     str'>, 'str'>>,
+  Expect<Equal<Trim<'str   '>, 'str'>>,
+  Expect<Equal<Trim<'     str     '>, 'str'>>,
+  Expect<Equal<Trim<'   \n\t foo bar \t'>, 'foo bar'>>,
+  Expect<Equal<Trim<''>, ''>>,
+  Expect<Equal<Trim<' \n\t '>, ''>>,
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -47,3 +45,4 @@ type cases = [
   > View solutions: https://tsch.js.org/108/solutions
   > More Challenges: https://tsch.js.org
 */
+

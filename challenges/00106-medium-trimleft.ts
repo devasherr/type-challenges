@@ -17,9 +17,9 @@
 */
 
 /* _____________ Your Code Here _____________ */
-
-export type TrimLeft<S extends string> = S extends `${infer Left}${infer Rest}`
-  ? Left extends " " | "\n" | "\t" ? TrimLeft<Rest> : S
+type Space = " " | "\n" | "\t"
+export type TrimLeft<S extends string> = S extends `${Space}${infer Rest}`
+  ? TrimLeft<Rest>
   : S
 
 /* _____________ Test Cases _____________ */
