@@ -1,4 +1,3 @@
-import type { TrimLeft } from "./00106-medium-trimleft";
-import type { Trim } from "./00108-medium-trim";
+import type { MyCapitalize } from "./00100-medium-capitalize";
 
-type trimmed = Trim<'  Hello World  '> // expected to be 'Hello World'
+type capitalized = MyCapitalize<'hello world'> // expected to be 'Hello world'
