@@ -1,3 +1,3 @@
-import type { Replace } from "./00116-medium-replace";
+import type { ReplaceAll } from "./00119-medium-replaceall";
 
-type replaced = Replace<'types are fun!', 'are', 'awesome'> // expected to be 'types are awesome!'
+type replaced = ReplaceAll<'t y p e s', ' ', ''> // expected to be 'types'
