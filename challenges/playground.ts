@@ -1,3 +1,3 @@
-import type { MyCapitalize } from "./00100-medium-capitalize";
+import type { Replace } from "./00116-medium-replace";
 
-type capitalized = MyCapitalize<'hello world'> // expected to be 'Hello world'
+type replaced = Replace<'types are fun!', 'are', 'awesome'> // expected to be 'types are awesome!'
