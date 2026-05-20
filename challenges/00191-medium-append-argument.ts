@@ -23,27 +23,24 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type AppendArgument<Fn extends (...args: any[]) => any, A> = Fn extends (
-  ...args: infer Params
-) => infer R
-  ? (...args: [...Params, x: A]) => R
-  : never;
+// export type AppendArgument<Fn extends (...args: any[]) => any, A> = Fn extends (...args: infer Args) => any ? [...Args, x: A] : Fn
+export type AppendArgument<Fn, A> = Fn extends (...args: infer Args) => infer R ? (...args: [...Args, x: A]) => R : never
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
+import type { Equal, Expect } from '../utils/'
 
-type Case1 = AppendArgument<(a: number, b: string) => number, boolean>;
-type Result1 = (a: number, b: string, x: boolean) => number;
+type Case1 = AppendArgument<(a: number, b: string) => number, boolean>
+type Result1 = (a: number, b: string, x: boolean) => number
 
-type Case2 = AppendArgument<() => void, undefined>;
-type Result2 = (x: undefined) => void;
+type Case2 = AppendArgument<() => void, undefined>
+type Result2 = (x: undefined) => void
 
 type cases = [
   Expect<Equal<Case1, Result1>>,
   Expect<Equal<Case2, Result2>>,
   // @ts-expect-error
   AppendArgument<unknown, undefined>,
-];
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -51,3 +48,4 @@ type cases = [
   > View solutions: https://tsch.js.org/191/solutions
   > More Challenges: https://tsch.js.org
 */
+
