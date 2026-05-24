@@ -1,6 +1,3 @@
-import type { AppendArgument } from "./00191-medium-append-argument"
+import type { LengthOfString } from "./00298-medium-length-of-string";
 
-type Fn = (a: number, b: string) => number
-
-type Result = AppendArgument<Fn, boolean>
-// expected be (a: number, b: string, x: boolean) => number
+type T = LengthOfString<"testing">
