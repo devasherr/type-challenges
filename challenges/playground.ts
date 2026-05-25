@@ -1,3 +1,3 @@
-import type { LengthOfString } from "./00298-medium-length-of-string";
+import type { Flatten } from "./00459-medium-flatten";
 
-type T = LengthOfString<"testing">
+type flatten = Flatten<[1, 2, [3, 4], [[[5]]]]> // [1, 2, 3, 4, 5]
