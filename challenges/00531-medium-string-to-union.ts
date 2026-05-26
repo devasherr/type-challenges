@@ -19,24 +19,19 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type StringToUnion<T extends string> =
-  T extends `${infer C}${infer Rest}` ? C | StringToUnion<Rest> : never;
+export type StringToUnion<T extends string, Acc = never> = T extends `${infer Head}${infer Rest}`
+  ? StringToUnion<Rest, Acc | Head>
+  : Acc
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
-import type { MyExclude } from "./00043-easy-exclude";
+import type { Equal, Expect } from '../utils/'
 
 type cases = [
-  Expect<Equal<StringToUnion<"">, never>>,
-  Expect<Equal<StringToUnion<"t">, "t">>,
-  Expect<Equal<StringToUnion<"hello">, "h" | "e" | "l" | "l" | "o">>,
-  Expect<
-    Equal<
-      StringToUnion<"coronavirus">,
-      "c" | "o" | "r" | "o" | "n" | "a" | "v" | "i" | "r" | "u" | "s"
-    >
-  >,
-];
+  Expect<Equal<StringToUnion<''>, never>>,
+  Expect<Equal<StringToUnion<'t'>, 't'>>,
+  Expect<Equal<StringToUnion<'hello'>, 'h' | 'e' | 'l' | 'l' | 'o'>>,
+  Expect<Equal<StringToUnion<'coronavirus'>, 'c' | 'o' | 'r' | 'o' | 'n' | 'a' | 'v' | 'i' | 'r' | 'u' | 's'>>,
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -44,3 +39,4 @@ type cases = [
   > View solutions: https://tsch.js.org/531/solutions
   > More Challenges: https://tsch.js.org
 */
+
