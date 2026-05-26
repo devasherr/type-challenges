@@ -19,56 +19,55 @@
 
 /* _____________ Your Code Here _____________ */
 
-export type AppendToObject<T, U extends keyof any, V> = {
-  [K in keyof T | U]: K extends keyof T ? T[K] : V;
-};
+export type AppendToObject<T, U extends PropertyKey, V> = {
+  [k in keyof T | U]: k extends keyof T ? T[k] : V
+}
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from "../utils/";
-import type { MyOmit } from "./00003-medium-omit";
+import type { Equal, Expect } from '../utils/'
 
 type test1 = {
-  key: "cat";
-  value: "green";
-};
+  key: 'cat'
+  value: 'green'
+}
 
 type testExpect1 = {
-  key: "cat";
-  value: "green";
-  home: boolean;
-};
+  key: 'cat'
+  value: 'green'
+  home: boolean
+}
 
 type test2 = {
-  key: "dog" | undefined;
-  value: "white";
-  sun: true;
-};
+  key: 'dog' | undefined
+  value: 'white'
+  sun: true
+}
 
 type testExpect2 = {
-  key: "dog" | undefined;
-  value: "white";
-  sun: true;
-  home: 1;
-};
+  key: 'dog' | undefined
+  value: 'white'
+  sun: true
+  home: 1
+}
 
 type test3 = {
-  key: "cow";
-  value: "yellow";
-  sun: false;
-};
+  key: 'cow'
+  value: 'yellow'
+  sun: false
+}
 
 type testExpect3 = {
-  key: "cow";
-  value: "yellow";
-  sun: false;
-  moon: false | undefined;
-};
+  key: 'cow'
+  value: 'yellow'
+  sun: false
+  moon: false | undefined
+}
 
 type cases = [
-  Expect<Equal<AppendToObject<test1, "home", boolean>, testExpect1>>,
-  Expect<Equal<AppendToObject<test2, "home", 1>, testExpect2>>,
-  Expect<Equal<AppendToObject<test3, "moon", false | undefined>, testExpect3>>,
-];
+  Expect<Equal<AppendToObject<test1, 'home', boolean>, testExpect1>>,
+  Expect<Equal<AppendToObject<test2, 'home', 1>, testExpect2>>,
+  Expect<Equal<AppendToObject<test3, 'moon', false | undefined>, testExpect3>>,
+]
 
 /* _____________ Further Steps _____________ */
 /*
@@ -76,3 +75,4 @@ type cases = [
   > View solutions: https://tsch.js.org/527/solutions
   > More Challenges: https://tsch.js.org
 */
+
